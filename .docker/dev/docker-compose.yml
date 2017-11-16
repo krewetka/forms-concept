@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+    web:
+        container_name: "inceptua_web"
+        build:
+            context: .
+            dockerfile: web/Dockerfile
+        ports:
+            - "${WEB_PORT}:80"
+        links:
+            - php
+        volumes_from:
+            - php:ro
+        restart: unless-stopped
+
+    php:
+        container_name: "inceptua_php"
+        build:
+            context: .
+            dockerfile: php/Dockerfile
+        volumes:
+            - "../../:/app"
+        restart: unless-stopped
+        depends_on:
+            - db
+    db:
+        container_name: "inceptua_db"
+        image: mariadb
+        ports:
+            - "${SQL_PORT}:3306"
+        volumes:
+            - mysql:/var/lib/mysql-docker
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: inceptua
+            MYSQL_DATABASE: inceptua
+            MYSQL_USER: inceptua
+            MYSQL_PASSWORD: inceptua
+volumes:
+    mysql: ~
