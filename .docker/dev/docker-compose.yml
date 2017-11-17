@@ -37,5 +37,16 @@ services:
             MYSQL_DATABASE: inceptua
             MYSQL_USER: inceptua
             MYSQL_PASSWORD: inceptua
+
+    adminer:
+        build:
+            context: ./adminer
+            args:
+              TIMEZONE: ${TIMEZONE}
+        restart: unless-stopped
+        ports:
+          - ${ADMINER_PORT}:8080
+        links:
+          - db:db
 volumes:
     mysql: ~
