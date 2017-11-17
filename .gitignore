@@ -17,3 +17,5 @@
 /web/bundles/
 /.idea/
 .php_cs.cache
+/.docker/.env
+/.docker/docker-compose.yml

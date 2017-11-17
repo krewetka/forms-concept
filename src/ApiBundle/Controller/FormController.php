@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FormController extends FOSRestController
 {
     /**
-     * @Rest\Get("/{id}")
+     * @Rest\Get("/form/{id}")
      * @ParamConverter("form")
      *
      * @param Form $form
