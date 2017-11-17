@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -10,7 +11,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -67,3 +68,42 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+
+fos_rest:
+    zone:
+      - { path: ^/api/* }
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false                           # We do not include format in request, so that all responses
+                                                        # will eventually be JSON formated
+    serializer:
+      serialize_null: false
+    param_fetcher_listener: true
+    body_listener: true
+    body_converter:
+            enabled: true
+    format_listener:
+        rules:
+            fallback_format: json
+            prefer_extension: false
+            priorities: [json]
+    view:
+        view_response_listener: force
+        formats:
+            json: true
+            xml: false
+            jsonp: false
+            rss: false
+            html: false
+        failed_validation: HTTP_BAD_REQUEST
+
+easy_admin:
+    site_name: 'Inceptua Admin Panel'
+    entities:
+        - AppBundle\Entity\Form
+        - AppBundle\Entity\FormItem
+        - AppBundle\Entity\DropDownList
+        - AppBundle\Entity\DropDownListItem
+        - AppBundle\Entity\CheckList
+        - AppBundle\Entity\CheckListItem

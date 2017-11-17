@@ -39,3 +39,11 @@ monolog:
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+hautelook_alice:
+    db_drivers:
+        orm: ~
+    locale: "%locale%"
+    seed: 1
+    persist_once: false
+    loading_limit: 5

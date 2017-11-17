@@ -1,0 +1,21 @@
+services:
+
+  api_bundle.model_factory_collection.response:
+    class: Xsolve\ModelFactoryBundle\ModelFactoryCollection\ModelFactoryCollection
+
+  api.model_factory.form_response:
+      class: ApiBundle\ModelFactory\FormResponseModelFactory
+      tags:
+        - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
+  api.model_factory.form_item_response:
+      class: ApiBundle\ModelFactory\FormItemResponseModelFactory
+      tags:
+        - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
+  api.model_factory.checklist_response:
+      class: ApiBundle\ModelFactory\CheckListResponseModelFactory
+      tags:
+        - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
+  api.model_factory.checklist_item_response:
+      class: ApiBundle\ModelFactory\CheckListItemResponseModelFactory
+      tags:
+        - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
