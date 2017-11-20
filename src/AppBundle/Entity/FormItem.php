@@ -3,17 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
- * @ORM\Table(name="form_item")
  * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
  */
 class FormItem extends BaseEntity
 {
     /**
      * @var Form
-     * @ManyToOne(targetEntity="AppBundle\Entity\Form", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Form", inversedBy="items")
      * @ORM\JoinColumn(nullable=false)
      */
     protected $form;
@@ -31,23 +30,16 @@ class FormItem extends BaseEntity
     protected $position;
 
     /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    protected $type = 'string';
-
-    /**
-     * @var DropDownList
-     * @ManyToOne(targetEntity="AppBundle\Entity\DropDownList", inversedBy="formItems")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    protected $dropDownList;
-
-    /**
      * @var bool
      * @ORM\Column(type="boolean")
      */
     protected $isRequired = false;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $type = 'string';
 
     /**
      * @return Form
@@ -98,38 +90,6 @@ class FormItem extends BaseEntity
     }
 
     /**
-     * @return string
-     */
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType(string $type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return DropDownList
-     */
-    public function getDropDownList(): ?DropDownList
-    {
-        return $this->dropDownList;
-    }
-
-    /**
-     * @param DropDownList $dropDownList
-     */
-    public function setDropDownList(DropDownList $dropDownList)
-    {
-        $this->dropDownList = $dropDownList;
-    }
-
-    /**
      * @return bool
      */
     public function isRequired(): bool
@@ -143,6 +103,22 @@ class FormItem extends BaseEntity
     public function setIsRequired(bool $isRequired)
     {
         $this->isRequired = $isRequired;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
     }
 
     public function __toString()

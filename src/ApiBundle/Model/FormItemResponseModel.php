@@ -36,39 +36,6 @@ class FormItemResponseModel
      */
     public function getType()
     {
-        return $this->formItem->getType();
-    }
-
-    /**
-     * @return string[]
-     * @Serializer\Type("array<string>")
-     * @Serializer\VirtualProperty
-     */
-    public function getEnum()
-    {
-        if ($this->formItem->getDropDownList()) {
-            return $this->formItem->getDropDownList()->getItems();
-        }
-
-        return null;
-    }
-
-    /**
-     * @return string
-     * @Serializer\Type("string")
-     * @Serializer\VirtualProperty
-     */
-    public function getDefault()
-    {
-        if (!$this->formItem->getDropDownList()) {
-            return null;
-        }
-        foreach ($this->formItem->getDropDownList()->getItems() as $item) {
-            if ($item->isDefault()) {
-                return $item;
-            }
-        }
-
-        return null;
+        return 'string';
     }
 }
