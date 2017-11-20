@@ -107,3 +107,4 @@ easy_admin:
         - AppBundle\Entity\DropDownListItem
         - AppBundle\Entity\CheckList
         - AppBundle\Entity\CheckListItem
+        - AppBundle\Entity\SimpleInput

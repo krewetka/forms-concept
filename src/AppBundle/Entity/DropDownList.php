@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\OneToMany;
  * @ORM\Table(name="dropdown")
  * @ORM\Entity
  */
-class DropDownList extends BaseEntity
+class DropDownList extends FormItem
 {
     /**
      * @var string
@@ -22,12 +22,6 @@ class DropDownList extends BaseEntity
      * @OneToMany(targetEntity="AppBundle\Entity\DropDownListItem", mappedBy="dropDownList")
      */
     protected $items;
-
-    /**
-     * @var FormItem[]
-     * @OneToMany(targetEntity="AppBundle\Entity\FormItem", mappedBy="dropDownList")
-     */
-    protected $formItems;
 
     /**
      * @return string
@@ -59,26 +53,5 @@ class DropDownList extends BaseEntity
     public function setItems($items)
     {
         $this->items = $items;
-    }
-
-    /**
-     * @return FormItem[]
-     */
-    public function getFormItems()
-    {
-        return $this->formItems;
-    }
-
-    /**
-     * @param FormItem[] $formItems
-     */
-    public function setFormItems($formItems)
-    {
-        $this->formItems = $formItems;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 }

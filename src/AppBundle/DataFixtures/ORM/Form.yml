@@ -1,88 +1,83 @@
 AppBundle\Entity\Form:
-  form1:
-    name: 'HCP qualification form'
-    checkLists:
-      - '@checklist1'
-      - '@checklist2'
+    form1:
+        name: 'HCP qualification form'
 
-AppBundle\Entity\FormItem:
-  textField1:
-    label: 'text1'
-    position: 1
-    form: '@form1'
-    isRequired: true
-  textField2:
-    label: 'text2'
-    position: 2
-    form: '@form1'
-    isRequired: false
-  dropdownField1:
-    label: 'dropdown 1'
-    position: 3
-    form: '@form1'
-    isRequired: false
-    dropDownList: '@dropDownList1'
-  dropdownField2:
-    label: 'dropdown 2'
-    position: 4
-    form: '@form1'
-    isRequired: true
-    dropDownList: '@dropDownList1'
-  dropdownField3:
-    label: 'dropdown 3'
-    position: 5
-    form: '@form1'
-    isRequired: false
-    dropDownList: '@dropDownList2'
 AppBundle\Entity\Checklist:
-  checklist1:
-    name: 'Checklist 1'
-  checklist2:
-    name: 'Checklist 2'
+    checklist1:
+        name: 'Checklist 1'
+    checklist2:
+        name: 'Checklist 2'
 
 AppBundle\Entity\CheckListItem:
-  checklistItem1:
-    label: 'checkbox 1'
-    position: 1
-    checklist: '@checklist1'
-  checklistItem2:
-    label: 'checkbox 2'
-    position: 2
-    checklist: '@checklist1'
-  checklistItem3:
-    label: 'checkbox 3'
-    position: 1
-    checklist: '@checklist2'
-  checklistItem4:
-    label: 'checkbox 4'
-    position: 2
-    checklist: '@checklist2'
+    checklistItem1:
+        label: 'checkbox 1'
+        position: 1
+        checklist: '@checklist1'
+    checklistItem2:
+        label: 'checkbox 2'
+        position: 2
+        checklist: '@checklist1'
+    checklistItem3:
+        label: 'checkbox 3'
+        position: 1
+        checklist: '@checklist2'
+    checklistItem4:
+        label: 'checkbox 4'
+        position: 2
+        checklist: '@checklist2'
 
 AppBundle\Entity\DropDownList:
     dropDownList1:
-      name: 'ABC list'
+        name: 'ABC list'
+        label: 'dropdown 1'
+        position: 3
+        form: '@form1'
+        isRequired: false
     dropDownList2:
-      name: 'yes-no list'
+        name: 'yes-no list'
+        label: 'dropdown 2'
+        position: 4
+        form: '@form1'
+        isRequired: true
+    dropDownList3:
+        name: 'list'
+        label: 'dropdown 3'
+        position: 5
+        form: '@form1'
+        isRequired: false
 
 AppBundle\Entity\DropDownListItem:
     dropDownListItem1:
-      name: 'option A'
-      position: 1
-      dropDownList: '@dropDownList1'
+        name: 'option A'
+        position: 1
+        dropDownList: '@dropDownList1'
     dropDownListItem2:
-      name: 'option B'
-      position: 2
-      dropDownList: '@dropDownList1'
+        name: 'option B'
+        position: 2
+        dropDownList: '@dropDownList1'
     dropDownListItem3:
-      name: 'option C'
-      position: 3
-      dropDownList: '@dropDownList1'
+        name: 'option C'
+        position: 3
+        dropDownList: '@dropDownList1'
     dropDownListItem4:
-      name: 'Yes'
-      position: 1
-      dropDownList: '@dropDownList2'
+        name: 'Yes'
+        position: 1
+        dropDownList: '@dropDownList2'
     dropDownListItem5:
-      name: 'No'
-      position: 2
-      dropDownList: '@dropDownList2'
-      isDefault: true
+        name: 'No'
+        position: 2
+        dropDownList: '@dropDownList2'
+        isDefault: true
+
+AppBundle\Entity\SimpleInput:
+    textField1:
+        label: 'text1'
+        position: 1
+        form: '@form1'
+        isRequired: true
+    textField2:
+        label: 'text2'
+        position: 2
+        form: '@form1'
+        isRequired: false
+        minLength: 3

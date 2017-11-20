@@ -7,8 +7,12 @@ services:
       class: ApiBundle\ModelFactory\FormResponseModelFactory
       tags:
         - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
-  api.model_factory.form_item_response:
-      class: ApiBundle\ModelFactory\FormItemResponseModelFactory
+  api.model_factory.simple_input_response:
+      class: ApiBundle\ModelFactory\SimpleInputResponseModelFactory
+      tags:
+        - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
+  api.model_factory.drop_down_response:
+      class: ApiBundle\ModelFactory\DropDownResponseModelFactory
       tags:
         - { name: xsolve.model_factory_bundle.model_factory, model-factory-collection-id: api_bundle.model_factory_collection.response }
   api.model_factory.checklist_response:
